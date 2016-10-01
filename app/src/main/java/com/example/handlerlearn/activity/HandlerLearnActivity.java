@@ -5,14 +5,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.os.SystemClock;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.example.handlerlearn.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class HandlerLearnActivity extends Activity {
 
     private static final String TAG = HandlerLearnActivity.class.getSimpleName();
+
+    private static final SimpleDateFormat mSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private TextView mTextView;
 
@@ -29,9 +35,26 @@ public class HandlerLearnActivity extends Activity {
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                mTextView.setText("update text in post of mHandler...");
+                mTextView.setText("update text in post of mHandler... "
+                        + mSdf.format(new Date()));
             }
         });
+
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mTextView.append("\nupdate text in postDelayed of mHandler... "
+                        + mSdf.format(new Date()));
+            }
+        }, 5 * 1000);
+
+        mHandler.postAtTime(new Runnable() {
+            @Override
+            public void run() {
+                mTextView.append("\nupdate text in postAtTime of mHandler... "
+                        + mSdf.format(new Date()));
+            }
+        }, SystemClock.uptimeMillis() + 10 * 1000);
 
         //在子线程里边实现消息机制
         Thread testThread = new Thread() {
