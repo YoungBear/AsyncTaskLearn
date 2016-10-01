@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.handlerlearn.activity.AsyncTaskActivity;
+import com.example.handlerlearn.activity.HandlerLearnActivity;
 
 public class MainActivity extends Activity {
 
@@ -20,8 +21,10 @@ public class MainActivity extends Activity {
 
     private void initViews() {
         Button btnAsyncTask = (Button) findViewById(R.id.btn_async_task);
+        Button btnHandlerLearn = (Button) findViewById(R.id.btn_handler_learn);
 
         btnAsyncTask.setOnClickListener(btnClickListener);
+        btnHandlerLearn.setOnClickListener(btnClickListener);
 
     }
 
@@ -31,6 +34,9 @@ public class MainActivity extends Activity {
             switch (v.getId()) {
                 case R.id.btn_async_task:
                     startActivity(AsyncTaskActivity.class);
+                    break;
+                case R.id.btn_handler_learn:
+                    startActivity(HandlerLearnActivity.class);
                     break;
             }
         }

@@ -15,7 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.AsyncTaskActivity">
+        <activity android:name=".activity.AsyncTaskActivity"
+            android:label="@string/async_task_name">
+        </activity>
+        <activity android:name=".activity.HandlerLearnActivity"
+            android:label="@string/handler_learn_name">
         </activity>
     </application>
 
